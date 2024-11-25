@@ -1,0 +1,196 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mt-3">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Tables</li>
+    </ol>
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary rounded" onclick="openModalCreate()">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Usuario
+                </button>
+            </div>
+        </div>
+        <hr />
+        <table class="display cell-border" id="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Correo Electrónico</th>
+                    <th scope="col">Telefóno</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Reseteo</th>
+                    <th scope="col">Reseteo</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCreateLabel">Crear nuevo usuario</h1>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                    <div class="form-floating px-1 mb-2  ">
+                        <input type="text" class="form-control" id="floatingName" placeholder="">
+                        <label for="floatingName">Nombre</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2 ">
+                        <input type="text" class="form-control" id="floatingLastname" placeholder="">
+                        <label for="floatingLastname">Apellidos</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2">
+                        <input type="email" class="form-control" id="floatingEmail" placeholder="">
+                        <label for="floatingEmail">Correo electrónico</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2">
+                        <input type="text" class="form-control" id="floatingPhone" placeholder="">
+                        <label for="floatingPhone">Teléfono</label>
+                    </div>
+
+                    <div class="form-floating px-1 mb-2 ">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="">
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
+                            <option selected>Selecciona el estado del usuario</option>
+                            <option value="0">Inactivo</option>
+                            <option value="1">Activo</option>
+                            <option value="2">Suspendido</option>
+                            <option value="3">Eliminado</option>
+                        </select>
+                        <label for="floatingStatus">Estado</label>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        var dataTable;
+
+        @*jQuery.ajax({
+            url: '@Url.Action("ListUser", "Home")',
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                console.log(data)
+            }
+        })*@
+
+        dataTable = $("#table").DataTable({
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("ListUser", "Home")',
+                type: "GET",
+                dataType: "json",
+            },
+            "columns": [
+                { "data": "Uid" },
+                { "data": "Uname" },
+                { "data": "Ulastname" },
+                { "data": "Uemail" },
+                { "data": "Uphone" },
+                //{ "data": "Upassword" },
+                {
+                    "data": "Ustatus", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge rounded-pill text-bg-primary">Activo</span>'
+                        } else {
+                            return '<span class="badge rounded-pill text-bg-danger">Inactivo</span>'
+                        }
+                    }
+                },
+                {
+                    "data": "Ureset", "render": function (valor) {
+                        if (valor) {
+                            return '<span class="badge rounded-pill text-bg-primary">Si</span>'
+                        } else {
+                            return '<span class="badge rounded-pill text-bg-danger">No</span>'
+                        }
+                    }
+                },
+                {
+                    "defaultContent": '<button class="btn btn-primary btn-sm ms-1 btn-edit"><i class="fas fa-pen"></i></button>' +
+                        '<button class="btn btn-warning btn-sm ms-1 btn-view"><i class="fas fa-eye"></i></button>' +
+                        '<button class="btn btn-danger  btn-sm ms-1 btn-delete"><i class="fas fa-trash"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "100px"
+                }
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
+            },
+
+        });
+
+        function openModalCreate(){
+            $("#modalCreate").modal("show")
+        }
+
+        $("#table tbody").on("click", '.btn-edit', function () {
+            /*alert("Hola")*/
+            var rowSelect = $(this).closest("tr");
+            console.log("EDIT REGISTER", dataTable.row(rowSelect).data())
+            var data = dataTable.row(rowSelect).data();
+
+        })
+
+        $("#table tbody").on("click", '.btn-view', function () {
+            /*alert("Hola")*/
+            var rowSelect = $(this).closest("tr");
+            console.log("VIEW REGISTER", dataTable.row(rowSelect).data())
+            var data = dataTable.row(rowSelect).data();
+
+        })
+
+        $("#table tbody").on("click", '.btn-delete', function () {
+            /*alert("Hola")*/
+            var rowSelect = $(this).closest("tr");
+            console.log("DELETE REGISTER",dataTable.row(rowSelect).data())
+            var data = dataTable.row(rowSelect).data();
+
+        })
+
+
+
+    </script>
+
+}
+
