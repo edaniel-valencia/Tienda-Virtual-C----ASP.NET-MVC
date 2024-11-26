@@ -19,7 +19,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-primary rounded" onclick="openModalCreate()">
+                <button type="button" class="btn btn-primary rounded" onclick="openModalCreate(null)">
                     <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Usuario
                 </button>
             </div>
@@ -44,12 +44,127 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Create -->
 <div class="modal fade" id="modalCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalCreateLabel">Crear nuevo usuario</h1>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                    <div class="form-floating px-1 mb-2  ">
+                        <input type="text" name="Uname" class="form-control" id="floatingName" placeholder="">
+                        <label for="floatingName">Nombre</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2 ">
+                        <input type="text"  name="Ulastname" class="form-control" id="floatingLastname" placeholder="">
+                        <label for="floatingLastname">Apellidos</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2">
+                        <input type="email"  name="Uemail" class="form-control" id="floatingEmail" placeholder="">
+                        <label for="floatingEmail">Correo electrónico</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2">
+                        <input type="text"  name="Uphone" class="form-control" id="floatingPhone" placeholder="">
+                        <label for="floatingPhone">Teléfono</label>
+                    </div>
+
+                    <div class="form-floating px-1 mb-2 ">
+                        <input type="password" name="Upassword" class="form-control" id="floatingPassword" placeholder="">
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-select"  name="Ustatus" id="floatingStatus" aria-label="Floating label select example">
+                            <option selected>Selecciona el estado del usuario</option>
+                            <option value="0">Inactivo</option>
+                            <option value="1">Activo</option>
+                            <option value="2">Suspendido</option>
+                            <option value="3">Eliminado</option>
+                        </select>
+                        <label for="floatingStatus">Estado</label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Update -->
+<div class="modal fade" id="modalUpdate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCreateLabel">Actualizar usuario</h1>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-floating mb-2  ">
+                                <input type="text" class="form-control" id="Uname" placeholder="">
+                                <label for="floatingName">Nombre</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating mb-2 ">
+                                <input type="text" class="form-control" id="Ulastname" placeholder="">
+                                <label for="floatingLastname">Apellidos</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating mb-2">
+                                <input type="email" class="form-control" id="Uemail" placeholder="ejemplo@correo.com" required>
+                                <label for="floatingEmail">Correo electrónico</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating mb-2">
+                                <input type="text" class="form-control" id="Uphone" placeholder="">
+                                <label for="floatingPhone">Teléfono</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-floating">
+                                <select class="form-select" id="Ustatus" aria-label="Estado del usuario">
+                                    <option value="0">Inactivo</option>
+                                    <option value="1">Activo</option>
+                                    <option value="2">Suspendido</option>
+                                    <option value="3">Eliminado</option>
+                                </select>
+
+                                <label for="floatingStatus">Estado</label>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Delete -->
+<div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCreateLabel">Eliminar usuario</h1>
                 <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <form>
@@ -87,7 +202,61 @@
                         <label for="floatingStatus">Estado</label>
                     </div>
                 </div>
-                
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal View -->
+<div class="modal fade" id="modalView" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalCreateLabel">Datos del usuario</h1>
+                <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <form>
+                <div class="modal-body">
+
+                    <div class="form-floating px-1 mb-2  ">
+                        <input type="text" class="form-control" id="floatingName" placeholder="">
+                        <label for="floatingName">Nombre</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2 ">
+                        <input type="text" class="form-control" id="floatingLastname" placeholder="">
+                        <label for="floatingLastname">Apellidos</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2">
+                        <input type="email" class="form-control" id="floatingEmail" placeholder="">
+                        <label for="floatingEmail">Correo electrónico</label>
+                    </div>
+                    <div class="form-floating px-1 mb-2">
+                        <input type="text" class="form-control" id="floatingPhone" placeholder="">
+                        <label for="floatingPhone">Teléfono</label>
+                    </div>
+
+                    <div class="form-floating px-1 mb-2 ">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="">
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
+                            <option selected>Selecciona el estado del usuario</option>
+                            <option value="0">Inactivo</option>
+                            <option value="1">Activo</option>
+                            <option value="2">Suspendido</option>
+                            <option value="3">Eliminado</option>
+                        </select>
+                        <label for="floatingStatus">Estado</label>
+                    </div>
+                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -146,9 +315,9 @@
                     }
                 },
                 {
-                    "defaultContent": '<button class="btn btn-primary btn-sm ms-1 btn-edit"><i class="fas fa-pen"></i></button>' +
-                        '<button class="btn btn-warning btn-sm ms-1 btn-view"><i class="fas fa-eye"></i></button>' +
-                        '<button class="btn btn-danger  btn-sm ms-1 btn-delete"><i class="fas fa-trash"></i></button>',
+                    "defaultContent": '<button class="btn btn-primary btn-sm ms-1 btn-edit" onclick="openModalUpdate(null)"><i class="fas fa-pen"></i></button>' +
+                        '<button class="btn btn-warning btn-sm ms-1 btn-view" onclick="openModalDelete()"><i class="fas fa-eye"></i></button>' +
+                        '<button class="btn btn-danger  btn-sm ms-1 btn-delete" onclick="openModalView()"><i class="fas fa-trash"></i></button>',
                     "orderable": false,
                     "searchable": false,
                     "width": "100px"
@@ -160,32 +329,67 @@
 
         });
 
-        function openModalCreate(){
+        // Modal Create
+
+        function openModalCreate(json) {
             $("#modalCreate").modal("show")
         }
 
+        // Modal Update
+
+        function openModalUpdate(json) { 
+            if (json != null) {
+                $("#Uname").val(json.Uname);
+                $("#Ulastname").val(json.Ulastname);
+                $("#Uemail").val(json.Uemail);
+                $("#Uphone").val(json.Uphone);
+                //$("#Ustatus").val(json.Ustatus == true ? "Activo" : "Inactivo");
+                // Mapear valores de Ustatus a descripciones
+                const statusMap = {
+                    1: 1,
+                    0: 0,
+                    2: 2,
+                    3: 3
+                };
+                $("#Ustatus").val(statusMap[json.Ustatus] || "Desconocido");
+                }
+            $("#modalUpdate").modal("show")
+        }
+
         $("#table tbody").on("click", '.btn-edit', function () {
-            /*alert("Hola")*/
             var rowSelect = $(this).closest("tr");
             console.log("EDIT REGISTER", dataTable.row(rowSelect).data())
             var data = dataTable.row(rowSelect).data();
-
+            console.log(data)
+            openModalUpdate(data)
         })
 
+
+        // Modal View
+
+        function openModalView() {
+            $("#modalDelete").modal("show")
+        }
+
         $("#table tbody").on("click", '.btn-view', function () {
-            /*alert("Hola")*/
             var rowSelect = $(this).closest("tr");
             console.log("VIEW REGISTER", dataTable.row(rowSelect).data())
             var data = dataTable.row(rowSelect).data();
-
+            console.log(data)
         })
+
+        // Modal Delete
+
+        function openModalDelete() {
+            $("#modalView").modal("show")
+        }
 
         $("#table tbody").on("click", '.btn-delete', function () {
             /*alert("Hola")*/
             var rowSelect = $(this).closest("tr");
             console.log("DELETE REGISTER",dataTable.row(rowSelect).data())
             var data = dataTable.row(rowSelect).data();
-
+            console.log(data)
         })
 
 

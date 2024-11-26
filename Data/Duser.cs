@@ -43,8 +43,8 @@ namespace Data
                                 Uemail = dr["Uemail"].ToString(),
                                 Uphone= dr["Uphone"].ToString(),
                                 Upassword= dr["Upassword"].ToString(),
-                                Ureset = Convert.ToBoolean(dr["Ureset"]),
-                                Ustatus = Convert.ToBoolean(dr["Ustatus"])
+                                Ureset = Convert.ToInt32(dr["Ureset"]),
+                                Ustatus = Convert.ToInt32(dr["Ustatus"])
                             });
                         }
                     }

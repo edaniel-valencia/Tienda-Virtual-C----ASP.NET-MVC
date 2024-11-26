@@ -16,7 +16,7 @@ namespace Interfaces
         public string Uemail { get; set; }
         public string Uphone { get; set; }
         public string Upassword { get; set; }
-        public bool Ureset { get; set; }
-        public bool Ustatus { get; set; }
+        public int Ureset { get; set; }
+        public int Ustatus { get; set; }
     }
 }
