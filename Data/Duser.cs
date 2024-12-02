@@ -27,7 +27,7 @@ namespace Data
                     //cmd.CommandType = CommandType.Text;
                     //oconexion.Open();
 
-                    string query = "SELECT Uid, Uname, Ulastname, Uemail, Uphone, Upassword, Ureset, Ustatus FROM user";
+                    string query = "SELECT * FROM user";
                     MySqlCommand cmd = new MySqlCommand(query, oconexion);
                     oconexion.Open();
 

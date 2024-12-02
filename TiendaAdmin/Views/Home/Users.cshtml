@@ -19,7 +19,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-primary rounded" onclick="openModalCreate(null)">
+                <button type="button" class="btn btn-primary rounded" onclick="openModalCreate()">
                     <i class="fa fa-plus" aria-hidden="true"></i> Nuevo Usuario
                 </button>
             </div>
@@ -28,7 +28,7 @@
         <table class="display cell-border" id="table" style="width:100%">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    @*<th scope="col">#</th>*@
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
                     <th scope="col">Correo Electrónico</th>
@@ -48,36 +48,36 @@
 <div class="modal fade" id="modalCreate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalCreateLabel">Crear nuevo usuario</h1>
                 <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
+
             <form>
                 <div class="modal-body">
-
                     <div class="form-floating px-1 mb-2  ">
-                        <input type="text" name="Uname" class="form-control" id="floatingName" placeholder="">
+                        <input type="text" name="Uname" class="form-control" id="name" placeholder="">
                         <label for="floatingName">Nombre</label>
                     </div>
                     <div class="form-floating px-1 mb-2 ">
-                        <input type="text"  name="Ulastname" class="form-control" id="floatingLastname" placeholder="">
+                        <input type="text"  name="Ulastname" class="form-control" id="lastname" placeholder="">
                         <label for="floatingLastname">Apellidos</label>
                     </div>
                     <div class="form-floating px-1 mb-2">
-                        <input type="email"  name="Uemail" class="form-control" id="floatingEmail" placeholder="">
+                        <input type="email"  name="Uemail" class="form-control" id="email" placeholder="">
                         <label for="floatingEmail">Correo electrónico</label>
                     </div>
                     <div class="form-floating px-1 mb-2">
-                        <input type="text"  name="Uphone" class="form-control" id="floatingPhone" placeholder="">
+                        <input type="text"  name="Uphone" class="form-control" id="phone" placeholder="">
                         <label for="floatingPhone">Teléfono</label>
                     </div>
-
                     <div class="form-floating px-1 mb-2 ">
-                        <input type="password" name="Upassword" class="form-control" id="floatingPassword" placeholder="">
+                        <input type="password" name="Upassword" class="form-control" id="password" placeholder="">
                         <label for="floatingPassword">Contraseña</label>
                     </div>
                     <div class="form-floating">
-                        <select class="form-select"  name="Ustatus" id="floatingStatus" aria-label="Floating label select example">
+                        <select class="form-select"  name="Ustatus" id="status" aria-label="Floating label select example">
                             <option selected>Selecciona el estado del usuario</option>
                             <option value="0">Inactivo</option>
                             <option value="1">Activo</option>
@@ -87,12 +87,12 @@
                         <label for="floatingStatus">Estado</label>
                     </div>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary" onsubmit="Create()">Guardar</button>
                 </div>
             </form>
+                
         </div>
     </div>
 </div>
@@ -113,32 +113,32 @@
                         <div class="col-sm-6">
                             <div class="form-floating mb-2  ">
                                 <input type="text" class="form-control" id="Uname" placeholder="">
-                                <label for="floatingName">Nombre</label>
+                                <label for="">Nombre</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-floating mb-2 ">
                                 <input type="text" class="form-control" id="Ulastname" placeholder="">
-                                <label for="floatingLastname">Apellidos</label>
+                                <label for="">Apellidos</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-floating mb-2">
                                 <input type="email" class="form-control" id="Uemail" placeholder="ejemplo@correo.com" required>
-                                <label for="floatingEmail">Correo electrónico</label>
+                                <label for="">Correo electrónico</label>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-floating mb-2">
                                 <input type="text" class="form-control" id="Uphone" placeholder="">
-                                <label for="floatingPhone">Teléfono</label>
+                                <label for="">Teléfono</label>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="form-floating">
                                 <select class="form-select" id="Ustatus" aria-label="Estado del usuario">
-                                    <option value="0">Inactivo</option>
                                     <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
                                     <option value="2">Suspendido</option>
                                     <option value="3">Eliminado</option>
                                 </select>
@@ -170,37 +170,6 @@
             <form>
                 <div class="modal-body">
 
-                    <div class="form-floating px-1 mb-2  ">
-                        <input type="text" class="form-control" id="floatingName" placeholder="">
-                        <label for="floatingName">Nombre</label>
-                    </div>
-                    <div class="form-floating px-1 mb-2 ">
-                        <input type="text" class="form-control" id="floatingLastname" placeholder="">
-                        <label for="floatingLastname">Apellidos</label>
-                    </div>
-                    <div class="form-floating px-1 mb-2">
-                        <input type="email" class="form-control" id="floatingEmail" placeholder="">
-                        <label for="floatingEmail">Correo electrónico</label>
-                    </div>
-                    <div class="form-floating px-1 mb-2">
-                        <input type="text" class="form-control" id="floatingPhone" placeholder="">
-                        <label for="floatingPhone">Teléfono</label>
-                    </div>
-
-                    <div class="form-floating px-1 mb-2 ">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="">
-                        <label for="floatingPassword">Contraseña</label>
-                    </div>
-                    <div class="form-floating">
-                        <select class="form-select" id="floatingStatus" aria-label="Floating label select example">
-                            <option selected>Selecciona el estado del usuario</option>
-                            <option value="0">Inactivo</option>
-                            <option value="1">Activo</option>
-                            <option value="2">Suspendido</option>
-                            <option value="3">Eliminado</option>
-                        </select>
-                        <label for="floatingStatus">Estado</label>
-                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -287,10 +256,10 @@
             "ajax": {
                 url: '@Url.Action("ListUser", "Home")',
                 type: "GET",
-                dataType: "json",
+                dataType: "json"
             },
             "columns": [
-                { "data": "Uid" },
+                //{ "data": "Uid" },
                 { "data": "Uname" },
                 { "data": "Ulastname" },
                 { "data": "Uemail" },
@@ -324,8 +293,8 @@
                 }
             ],
             language: {
-                url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json',
-            },
+                url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-ES.json'
+            }
 
         });
 
@@ -335,16 +304,39 @@
             $("#modalCreate").modal("show")
         }
 
+        function Create() {
+
+            var create = {
+                Uname: $("#name").val(),
+                Ulastname: $("#lastname").val(),
+                Uemail: $("#email").val(),
+                Uphone: $("#phone").val(),
+                Upassword: $("#password").val(),
+                Ustatus: $("#status").val() 
+            }
+
+            try {
+                dataTable.row.add(create).draw(false);
+            } catch (error) {
+                console.error("Error while adding a row to the DataTable: ", error);            
+            }
+           
+            $("#modalCreate").modal("hide")
+
+        }
+
         // Modal Update
 
-        function openModalUpdate(json) { 
+        function openModalUpdate(json) {
             if (json != null) {
                 $("#Uname").val(json.Uname);
                 $("#Ulastname").val(json.Ulastname);
                 $("#Uemail").val(json.Uemail);
                 $("#Uphone").val(json.Uphone);
+
                 //$("#Ustatus").val(json.Ustatus == true ? "Activo" : "Inactivo");
                 // Mapear valores de Ustatus a descripciones
+
                 const statusMap = {
                     1: 1,
                     0: 0,
@@ -352,7 +344,7 @@
                     3: 3
                 };
                 $("#Ustatus").val(statusMap[json.Ustatus] || "Desconocido");
-                }
+               }
             $("#modalUpdate").modal("show")
         }
 
