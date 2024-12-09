@@ -84,6 +84,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Balert.cs" />
+    <Compile Include="Bresources.cs" />
     <Compile Include="Buser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

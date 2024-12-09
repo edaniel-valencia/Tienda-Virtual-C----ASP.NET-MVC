@@ -16,6 +16,7 @@ namespace TiendaAdmin
 
             bundles.Add(new ScriptBundle("~/bundles/complement").Include(
                       "~/Scripts/scripts.js",
+                      "~/Scripts/alert.js",
                       "~/Scripts/fontawesome/all.min.js",
                       "~/Scripts/DataTables/jquery.dataTables.min.js",
                       "~/Scripts/DataTables/dataTables.responsive.min.js"));

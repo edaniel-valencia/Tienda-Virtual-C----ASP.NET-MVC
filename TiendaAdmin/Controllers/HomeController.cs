@@ -89,5 +89,34 @@ namespace TiendaAdmin.Controllers
             return Json(new { data = olist }, JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpPost]
+        public JsonResult CreateUser(User objeto)
+        {
+            object result;
+            string message = string.Empty;
+
+            // Llamada al método para crear el usuario
+            result = new Buser().Create(objeto, out message);
+            string alert = Balert.GenerateAlert("Usuario creado exitosamente.", "success");
+
+            return Json(new { result = result, message = message, alert }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        //[HttpPost]
+        //public JsonResult EditUser(User objeto)
+        //{
+        //    object result;
+        //    string message = string.Empty;
+
+        //    result = new Buser().Edit(objeto, out message);
+
+        //    return Json(new { result = result, message = message }, JsonRequestBehavior.AllowGet);
+
+
+        //}
+
     }
 }
