@@ -27,7 +27,12 @@ namespace Data
                     //MySqlCommand cmd = new MySqlCommand(query, oconexion); 
                     //cmd.CommandType = CommandType.Text;
                     //oconexion.Open();
+<<<<<<< HEAD
                     string query = "SELECT Uid, Uname, Ulastname, Uemail, Uphone, Upassword, Ureset, Ustatus FROM user";
+=======
+
+                    string query = "SELECT * FROM user";
+>>>>>>> 19595bcb0b459969504cb8f5e5ff11e901108f4d
                     MySqlCommand cmd = new MySqlCommand(query, oconexion);
                     oconexion.Open();
                     using (MySqlDataReader dr = cmd.ExecuteReader()) {

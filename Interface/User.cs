@@ -10,7 +10,7 @@ namespace Interfaces
     public class User
     {
 
-        public int Uid { get; set; }
+        public int? Uid { get; set; }
         public string Uname { get; set; }
         public string Ulastname { get; set; }
         public string Uemail { get; set; }
