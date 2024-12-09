@@ -18,7 +18,6 @@ namespace Data
     {
         public List<User> ListUser() {
             List<User> list = new List<User>();
-
             try{
                 using (MySqlConnection oconexion = new MySqlConnection(Connection.conexion))
                 {
@@ -26,13 +25,9 @@ namespace Data
                     //MySqlCommand cmd = new MySqlCommand(query, oconexion); 
                     //cmd.CommandType = CommandType.Text;
                     //oconexion.Open();
-
                     string query = "SELECT Uid, Uname, Ulastname, Uemail, Uphone, Upassword, Ureset, Ustatus FROM user";
                     MySqlCommand cmd = new MySqlCommand(query, oconexion);
                     oconexion.Open();
-
-
-
                     using (MySqlDataReader dr = cmd.ExecuteReader()) {
                         while (dr.Read())
                         {
